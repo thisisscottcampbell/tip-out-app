@@ -12,6 +12,15 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
   },
+  input: {
+    margin: 10,
+    width: 230,
+    height: 50,
+    fontSize: 25,
+    color: "#b800e6",
+    backgroundColor: "white",
+    textAlign: "center",
+  },
   link: {
     marginTop: 15,
     paddingVertical: 15,
