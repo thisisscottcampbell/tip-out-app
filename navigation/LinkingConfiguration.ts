@@ -12,6 +12,19 @@ export default {
     screens: {
       Root: {
         screens: {
+            WelcomeScreen: {
+            screens: {
+            },
+          },
+        }
+      },
+      Login: {
+        screens: {
+          LoginScreen: 'Login'
+        },
+      },
+      BottomTab: {
+        screens: {
           TabOne: {
             screens: {
               TabOneScreen: 'one',
@@ -20,11 +33,6 @@ export default {
           TabTwo: {
             screens: {
               TabTwoScreen: 'two',
-            },
-          },
-          HomeScreen: {
-            screens: {
-              TabThreeScreen: 'three',
             },
           },
         },
