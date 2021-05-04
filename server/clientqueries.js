@@ -15,3 +15,11 @@ mutation signUpUser(
   }
 
   {"first_name": "cara", "last_name": "dibdin", "email": "dibdin@gmail.com", "password": "1234", "position": "123", "admin": true, "company": "Logans restaurant"}
+
+  query ($email: String, $password: String){
+    getUser(email: $email, password: $password){
+     first_name
+     last_name
+   }
+   }
+ 
