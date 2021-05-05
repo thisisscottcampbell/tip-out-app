@@ -4,6 +4,9 @@ import { Text, View, TextInput, Button, Alert } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import { LoginProps } from "../../types";
 
+import {useSelector, useDispatch} from 'react-redux'
+import {login} from '../../state/actions/actions'
+
 import StyledPrimaryButton from "../../components/PrimaryButton";
 
 export default function LoginScreen({ navigation }: LoginProps) {
@@ -12,6 +15,13 @@ export default function LoginScreen({ navigation }: LoginProps) {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const {loginData} = useSelector(state => state.loginReducer);
+  const dispatch = useDispatch();
+  const fetchLogin = () => dispatch(login());
+  React.useEffect(()=>{
+    fetchLogin();
+   }, [])
 
   return (
     <View style={styles.container}>
