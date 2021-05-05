@@ -3,8 +3,8 @@
 
 import * as React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { HomeScreen } from "../../screens";
-import { HomeParamList } from "../../types";
+import { HomeScreen } from "../../../screens";
+import { HomeParamList } from "../../../types";
 
 const HomeStack = createStackNavigator<HomeParamList>();
 

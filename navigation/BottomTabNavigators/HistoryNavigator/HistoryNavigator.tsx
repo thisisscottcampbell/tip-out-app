@@ -3,8 +3,8 @@
 
 import * as React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { HistoryScreen } from "../../screens";
-import { HistoryParamList } from "../../types";
+import { HistoryScreen } from "../../../screens";
+import { HistoryParamList } from "../../../types";
 
 const HistoryStack = createStackNavigator<HistoryParamList>();
 

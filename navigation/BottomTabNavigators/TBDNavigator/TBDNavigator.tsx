@@ -3,8 +3,8 @@
 
 import * as React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { TBDScreen } from "../../screens";
-import { TBDParamList } from "../../types";
+import { TBDScreen } from "../../../screens";
+import { TBDParamList } from "../../../types";
 
 const TBDStack = createStackNavigator<TBDParamList>();
 

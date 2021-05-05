@@ -3,8 +3,8 @@
 
 import * as React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { AccountScreen } from "../../screens";
-import { AccountParamList } from "../../types";
+import { AccountScreen } from "../../../screens";
+import { AccountParamList } from "../../../types";
 
 const AccountStack = createStackNavigator<AccountParamList>();
 
