@@ -29,6 +29,27 @@ export default {
               HomeScreen: "Home",
             },
           },
+          TBD: {
+            screens: {
+              TBDScreen: "TBD",
+            },
+          },
+          Payslip: {
+            screens: {
+              ShiftInfoScreen: "ShiftInfo",
+              PayslipScreen: "PayslipScreen",
+            },
+          },
+          History: {
+            screens: {
+              HistoryScreen: "History",
+            },
+          },
+          Account: {
+            screens: {
+              AccountScreen: "Account",
+            },
+          },
         },
       },
       NotFound: "*",

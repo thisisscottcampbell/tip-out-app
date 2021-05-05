@@ -13,7 +13,11 @@ import useColorScheme from "../hooks/useColorScheme";
 
 import { BottomTabParamList } from "../types";
 
-import { HomeNavigator } from "./HomeNavigator";
+import {HistoryNavigator } from "./HistoryNavigator";
+import {HomeNavigator } from "./HomeNavigator";
+import {AccountNavigator } from "./AccountNavigator";
+import {TBDNavigator } from "./TBDNavigator";
+import {PayslipNavigator } from "./PayslipNavigator";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -28,6 +32,42 @@ export default function BottomTabNavigator() {
       <BottomTab.Screen
         name="Home"
         component={HomeNavigator}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="ios-code" color={color} />
+          ),
+        }}
+      />
+            <BottomTab.Screen
+        name="TBD"
+        component={TBDNavigator}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="ios-code" color={color} />
+          ),
+        }}
+      />
+            <BottomTab.Screen
+        name="Payslip"
+        component={PayslipNavigator}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="ios-code" color={color} />
+          ),
+        }}
+      />
+            <BottomTab.Screen
+        name="History"
+        component={HistoryNavigator}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="ios-code" color={color} />
+          ),
+        }}
+      />
+            <BottomTab.Screen
+        name="Account"
+        component={AccountNavigator}
         options={{
           tabBarIcon: ({ color }) => (
             <TabBarIcon name="ios-code" color={color} />

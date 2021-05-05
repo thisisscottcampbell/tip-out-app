@@ -34,7 +34,7 @@ export default function LoginScreen({ navigation }: LoginProps) {
         name="email"
         rules={{ required: true }}
       />
-      {errors.firstName && <Text>Email is required!</Text>}
+      {errors.email && <Text>Email is required!</Text>}
 
       <Controller
         control={control}
@@ -53,7 +53,7 @@ export default function LoginScreen({ navigation }: LoginProps) {
         name="password"
         rules={{ required: true }}
       />
-      {errors.lastName && <Text>Password is required!</Text>}
+      {errors.password && <Text>Password is required!</Text>}
 
       <StyledPrimaryButton
         text={"Login"}
