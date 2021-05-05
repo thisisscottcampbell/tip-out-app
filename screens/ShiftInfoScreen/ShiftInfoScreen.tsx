@@ -3,15 +3,14 @@ import styles from "./styles";
 import { useForm, Controller } from "react-hook-form";
 import { Text, View, TextInput, Alert } from "react-native";
 import StyledPrimaryButton from "../../components/PrimaryButton";
-import { PayslipProps } from "../../types"
+import { TipOutProps } from "../../types";
 
-export default function ShiftInfoScreen({navigation} :PayslipProps ) {
+export default function ShiftInfoScreen({ navigation }: TipOutProps) {
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
 
   return (
     <View style={styles.container}>
@@ -31,11 +30,11 @@ export default function ShiftInfoScreen({navigation} :PayslipProps ) {
             />
           );
         }}
-        name="total"
+        name="totalSales"
         rules={{ required: true }}
       />
-      {errors.total && <Text>Total is Required!</Text>}
-      
+      {errors.totalSales && <Text>Total Sales is Required!</Text>}
+
       {/* Tips */}
       <Controller
         control={control}
@@ -46,15 +45,15 @@ export default function ShiftInfoScreen({navigation} :PayslipProps ) {
               onBlur={onBlur}
               onChangeText={(value) => onChange(value)}
               value={value}
-              placeholder="Tips"
+              placeholder="Tips Received"
               placeholderTextColor="#f0b3ff"
             />
           );
         }}
-        name="tips"
+        name="tipsReceived"
         rules={{ required: true }}
       />
-      {errors.tips && <Text>Tips are Required!</Text>}
+      {errors.tipsReceived && <Text>Tips Received is Required!</Text>}
 
       {/* Food */}
       <Controller
@@ -76,7 +75,7 @@ export default function ShiftInfoScreen({navigation} :PayslipProps ) {
       />
       {errors.foodSales && <Text>Food Sales are Required!</Text>}
 
-       {/* Liquor */}
+      {/* Liquor */}
       <Controller
         control={control}
         render={({ field: { onChange, onBlur, value } }) => {
@@ -96,13 +95,12 @@ export default function ShiftInfoScreen({navigation} :PayslipProps ) {
       />
       {errors.liquorSales && <Text>Liquor Sales are Required!</Text>}
 
-
       <StyledPrimaryButton
         text={"Submit"}
         onPress={handleSubmit((data) => {
           console.log(data); //send data to state manager
           // Alert.alert("Data Submitted", `${JSON.stringify(data)}`)
-          navigation.navigate("PayslipScreen");
+          navigation.navigate("SlipScreen");
         })}
       />
     </View>

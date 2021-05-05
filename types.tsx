@@ -23,15 +23,14 @@ export type WelcomeProps = {
   navigation: LoginScreenNavigationProp;
 };
 
-export type PayslipScreenNavigationProp = StackNavigationProp<
+export type TipOutScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
-  "PayslipScreen"
+  "TipOutScreen"
 >;
 
-export type PayslipProps = {
-  navigation: PayslipScreenNavigationProp;
+export type TipOutProps = {
+  navigation: TipOutScreenNavigationProp;
 };
-
 
 export type RootStackParamList = {
   Root: undefined;
@@ -39,18 +38,17 @@ export type RootStackParamList = {
   NotFound: undefined;
   BottomTab: undefined;
   Welcome: undefined;
-  PayslipScreen: undefined;
+  SlipScreen: undefined;
 };
 
 export type BottomTabParamList = {
   Home: undefined;
   TBD: undefined;
-  Payslip: undefined;
+  TipOut: undefined;
   History: undefined;
   Account: undefined;
   ShiftInfo: undefined;
 };
-
 
 export type HomeParamList = {
   HomeScreen: undefined;
@@ -58,9 +56,9 @@ export type HomeParamList = {
 export type TBDParamList = {
   TBDScreen: undefined;
 };
-export type PayslipParamList = {
+export type TipOutParamList = {
   ShiftInfoScreen: undefined;
-  PayslipScreen: undefined;
+  SlipScreen: undefined;
 };
 export type HistoryParamList = {
   HistoryScreen: undefined;
@@ -68,4 +66,3 @@ export type HistoryParamList = {
 export type AccountParamList = {
   AccountScreen: undefined;
 };
-

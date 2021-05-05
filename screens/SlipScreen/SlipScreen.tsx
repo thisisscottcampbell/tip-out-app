@@ -4,10 +4,10 @@ import { useForm, Controller } from "react-hook-form";
 import { Text, View, TextInput, Alert } from "react-native";
 import StyledPrimaryButton from "../../components/PrimaryButton";
 
-export default function PayslipScreen() {
+export default function SlipScreen() {
   return (
     <View style={styles.container}>
-      <Text>PaySlip</Text>
+      <Text>Slip</Text>
     </View>
   );
 }

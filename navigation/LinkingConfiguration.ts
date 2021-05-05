@@ -34,10 +34,10 @@ export default {
               TBDScreen: "TBD",
             },
           },
-          Payslip: {
+          TipOut: {
             screens: {
               ShiftInfoScreen: "ShiftInfo",
-              PayslipScreen: "PayslipScreen",
+              SlipScreen: "SlipScreen",
             },
           },
           History: {
