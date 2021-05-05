@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useRef } from "react";
 import styles from "./styles";
 import { useForm, Controller } from "react-hook-form";
 import { Text, View, TextInput, Alert } from "react-native";
@@ -11,6 +11,10 @@ export default function ShiftInfoScreen({ navigation }: TipOutProps) {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const tipsReceivedRef = useRef(null);
+  const foodSalesRef = useRef(null);
+  const liquorSalesRef = useRef(null);
 
   return (
     <View style={styles.container}>
@@ -27,6 +31,10 @@ export default function ShiftInfoScreen({ navigation }: TipOutProps) {
               value={value}
               placeholder="Total Sales"
               placeholderTextColor="#f0b3ff"
+              autoFocus={true}
+              returnKeyType={"next"}
+              blurOnSubmit={false}
+              onSubmitEditing={() => tipsReceivedRef.current.focus()}
             />
           );
         }}
@@ -47,6 +55,10 @@ export default function ShiftInfoScreen({ navigation }: TipOutProps) {
               value={value}
               placeholder="Tips Received"
               placeholderTextColor="#f0b3ff"
+              ref={tipsReceivedRef}
+              blurOnSubmit={false}
+              returnKeyType={"next"}
+              onSubmitEditing={() => foodSalesRef.current.focus()}
             />
           );
         }}
@@ -67,6 +79,10 @@ export default function ShiftInfoScreen({ navigation }: TipOutProps) {
               value={value}
               placeholder="Food Sales"
               placeholderTextColor="#f0b3ff"
+              ref={foodSalesRef}
+              blurOnSubmit={false}
+              returnKeyType={"next"}
+              onSubmitEditing={() => liquorSalesRef.current.focus()}
             />
           );
         }}
@@ -87,6 +103,7 @@ export default function ShiftInfoScreen({ navigation }: TipOutProps) {
               value={value}
               placeholder="Liquor Sales"
               placeholderTextColor="#f0b3ff"
+              ref={liquorSalesRef}
             />
           );
         }}
