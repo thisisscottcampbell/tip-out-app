@@ -39,6 +39,7 @@ export type RootStackParamList = {
   BottomTab: undefined;
   Welcome: undefined;
   SlipScreen: undefined;
+  TipOutScreen: undefined;
 };
 
 export type BottomTabParamList = {
