@@ -1,1 +1,0 @@
-{"ast":null,"code":"export * from \"./StyledText\";","map":{"version":3,"sources":["/home/thiesl137/featherDevs/tip-out-app/components/StyledText/index.ts"],"names":[],"mappings":"AAEA","sourcesContent":["//import {MonoText} from './StyledText'\n\nexport * from './StyledText'"]},"metadata":{},"sourceType":"module"}
