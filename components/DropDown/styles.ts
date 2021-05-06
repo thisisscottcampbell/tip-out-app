@@ -4,21 +4,20 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fae6ff",
-    borderWidth: 1,
+    borderWidth: 2,
+    borderColor: "blue",
     alignItems: "center",
     justifyContent: "center",
-    padding: 20,
+    paddingVertical: 20,
+    paddingHorizontal: 120,
   },
-  button: {
-    margin: 10,
+  dropDown: {
+    backgroundColor: "white",
     width: 230,
-    height: 50,
-    backgroundColor: "#b800e6",
-    alignItems: "center",
-    justifyContent: "center",
+    borderRadius: 35,
   },
   text: {
-    color: "#f5ccff",
+    color: "#b800e6",
     fontSize: 20,
   },
   title: {
