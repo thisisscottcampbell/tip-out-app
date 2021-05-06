@@ -1,11 +1,12 @@
-import * as React from "react";
+import React, {useState, useEffect} from "react";
 import styles from "./styles";
 import { Text, View, TextInput, Button, Alert } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import { LoginProps } from "../../types";
+import { RootState } from "../../state/store"
 
 import {useSelector, useDispatch} from 'react-redux'
-import {login} from '../../state/actions/actions'
+import {login, setEmail, setPassword} from '../../state/actions/actions'
 
 import StyledPrimaryButton from "../../components/PrimaryButton";
 
@@ -16,12 +17,9 @@ export default function LoginScreen({ navigation }: LoginProps) {
     formState: { errors },
   } = useForm();
 
-  const {loginData} = useSelector(state => state.loginReducer);
+
+  const {email, password} = useSelector((state: RootState) => state.loginReducer);//loginData contains .email and .password
   const dispatch = useDispatch();
-  const fetchLogin = () => dispatch(login());
-  React.useEffect(()=>{
-    fetchLogin();
-   }, [])
 
   return (
     <View style={styles.container}>
@@ -34,7 +32,7 @@ export default function LoginScreen({ navigation }: LoginProps) {
             <TextInput
               style={styles.input}
               onBlur={onBlur}
-              onChangeText={(value) => onChange(value)}
+              onChangeText={email => dispatch(setEmail(email))} //how to update state text on input with redux in rreact native
               value={value}
               placeholder="email"
               placeholderTextColor="#f0b3ff"
@@ -53,7 +51,7 @@ export default function LoginScreen({ navigation }: LoginProps) {
             <TextInput
               style={styles.input}
               onBlur={onBlur}
-              onChangeText={(value) => onChange(value)}
+              onChangeText={(password) => dispatch(setPassword(password))}
               value={value}
               placeholder="password"
               placeholderTextColor="#f0b3ff"
@@ -68,7 +66,7 @@ export default function LoginScreen({ navigation }: LoginProps) {
       <StyledPrimaryButton
         text={"Login"}
         onPress={handleSubmit((data) => {
-          console.log(data); //send data to state manager
+       //graphql query for database
           navigation.navigate("BottomTab");
         })}
       />
