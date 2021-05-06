@@ -29,6 +29,27 @@ export default {
               HomeScreen: "Home",
             },
           },
+          TBD: {
+            screens: {
+              TBDScreen: "TBD",
+            },
+          },
+          TipOut: {
+            screens: {
+              ShiftInfoScreen: "ShiftInfo",
+              SlipScreen: "SlipScreen",
+            },
+          },
+          History: {
+            screens: {
+              HistoryScreen: "History",
+            },
+          },
+          Account: {
+            screens: {
+              AccountScreen: "Account",
+            },
+          },
         },
       },
       NotFound: "*",
