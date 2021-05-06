@@ -32,6 +32,24 @@ export type TipOutProps = {
   navigation: TipOutScreenNavigationProp;
 };
 
+export type SlipScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  "SlipScreen"
+>;
+
+export type SlipProps = {
+  navigation: SlipScreenNavigationProp;
+};
+
+export type ReviewScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  "ReviewScreen"
+>;
+
+export type ReviewProps = {
+  navigation: ReviewScreenNavigationProp;
+};
+
 export type RootStackParamList = {
   Root: undefined;
   Login: undefined;
@@ -40,6 +58,7 @@ export type RootStackParamList = {
   Welcome: undefined;
   SlipScreen: undefined;
   TipOutScreen: undefined;
+  ReviewScreen: undefined;
 };
 
 export type BottomTabParamList = {
@@ -60,6 +79,7 @@ export type TBDParamList = {
 export type TipOutParamList = {
   ShiftInfoScreen: undefined;
   SlipScreen: undefined;
+  ReviewScreen: undefined;
 };
 export type HistoryParamList = {
   HistoryScreen: undefined;

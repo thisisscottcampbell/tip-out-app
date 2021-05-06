@@ -3,7 +3,7 @@
 
 import * as React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { SlipScreen, ShiftInfoScreen } from "../../../screens";
+import { SlipScreen, ShiftInfoScreen, ReviewScreen } from "../../../screens";
 import { TipOutParamList } from "../../../types";
 
 const TipOutStack = createStackNavigator<TipOutParamList>();
@@ -20,6 +20,11 @@ export default function TipOutNavigator() {
         name="SlipScreen"
         component={SlipScreen}
         options={{ headerTitle: "Slip Screen" }}
+      />
+      <TipOutStack.Screen
+        name="ReviewScreen"
+        component={ReviewScreen}
+        options={{ headerTitle: "Review Screen" }}
       />
     </TipOutStack.Navigator>
   );

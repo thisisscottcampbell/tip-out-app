@@ -9,3 +9,4 @@ export * from "./SlipScreen";
 export * from "./HistoryScreen";
 export * from "./AccountScreen";
 export * from "./ShiftInfoScreen";
+export * from "./ReviewScreen";
