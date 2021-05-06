@@ -50,6 +50,15 @@ export type ReviewProps = {
   navigation: ReviewScreenNavigationProp;
 };
 
+export type ConfirmScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  "ConfirmScreen"
+>;
+
+export type ConfirmProps = {
+  navigation: ReviewScreenNavigationProp;
+};
+
 export type RootStackParamList = {
   Root: undefined;
   Login: undefined;
@@ -59,6 +68,7 @@ export type RootStackParamList = {
   SlipScreen: undefined;
   TipOutScreen: undefined;
   ReviewScreen: undefined;
+  ConfirmScreen: undefined;
 };
 
 export type BottomTabParamList = {
@@ -80,6 +90,7 @@ export type TipOutParamList = {
   ShiftInfoScreen: undefined;
   SlipScreen: undefined;
   ReviewScreen: undefined;
+  ConfirmScreen: undefined;
 };
 export type HistoryParamList = {
   HistoryScreen: undefined;

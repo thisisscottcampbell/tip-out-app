@@ -10,7 +10,7 @@ export default function ReviewScreen({navigation}: ReviewProps) {
     <View style={styles.container}>
       <Text>Review</Text>
       <StyledPrimaryButton text={"Edit"} onPress={() => navigation.goBack()} />
-      <StyledPrimaryButton text={"Submit"} onPress={() => console.log("sucess")} />
+      <StyledPrimaryButton text={"Submit"} onPress={() => navigation.navigate("ConfirmScreen")} />
     </View>
   );
 }

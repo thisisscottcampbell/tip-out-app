@@ -10,7 +10,7 @@ export default function SlipScreen({navigation}: SlipProps) {
   return (
     <View style={styles.container}>
       <Text>Slip</Text>
-      <DropDown />
+      {/* <DropDown /> */}
       <StyledPrimaryButton text={"Submit"} onPress={() => navigation.navigate('ReviewScreen')} />
     </View>
   );

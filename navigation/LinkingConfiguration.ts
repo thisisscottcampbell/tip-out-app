@@ -39,6 +39,7 @@ export default {
               ShiftInfoScreen: "ShiftInfo",
               SlipScreen: "SlipScreen",
               ReviewScreen: "ReviewScreen",
+              ConfirmScreen: "ConfirmScreen",
             },
           },
           History: {

@@ -10,3 +10,4 @@ export * from "./HistoryScreen";
 export * from "./AccountScreen";
 export * from "./ShiftInfoScreen";
 export * from "./ReviewScreen";
+export * from "./ConfirmScreen";
