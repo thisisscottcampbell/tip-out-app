@@ -1,6 +1,6 @@
 import { Text, View, TextInput, Image } from "react-native";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useQuery, useLazyQuery } from "@apollo/client";
 import SIGNIN_USER from "../../graphql/mutations/signIn";
 
@@ -50,14 +50,20 @@ export default function LoginScreen({ navigation }: LoginProps) {
   );
   const dispatch = useDispatch();
 
-  // const [getUser, { loading, data, error }] = useLazyQuery(SIGNIN_USER);
-  const { loading, error, data } = useQuery(SIGNIN_USER, {
-    variables: { email, password },
-  });
+  const [getUser, { loading, data, error }] = useLazyQuery(SIGNIN_USER);
+  // const { loading, error, data } = useQuery(SIGNIN_USER, {
+  //   variables: { email, password },
+  // });
+  console.log("data --> ", data);
+  //This has to be done in a useEffect so that React Native can sync
+  //the update with the render cycle otherwise it causes the message
+  // `Warning: Cannot update a component from inside the function body of a different component.`
 
-  console.log("loading", loading);
-  console.log("error", error);
-  console.log("data", data?.getUser);
+  useEffect(() => {
+    !loading && data?.getUser.first_name
+      ? navigation.navigate("BottomTab")
+      : null;
+  }, [loading, data]);
 
   return (
     <View style={styles.container}>
@@ -108,7 +114,7 @@ export default function LoginScreen({ navigation }: LoginProps) {
           //then navigate to the next screen
           dispatch(setEmail(email));
           dispatch(setPassword(password));
-          // getUser({ variables: { email,password }})
+          getUser({ variables: { email, password } });
           console.log("SUBMITTED", email, password);
           reset();
         })}
