@@ -1,7 +1,11 @@
-import { StatusBar } from "expo-status-bar";
+import { ApolloProvider } from "@apollo/client/react"
 import React from "react";
-import { SafeAreaProvider } from "react-native-safe-area-context";
+import { client } from "./graphql/client"
+import { Provider } from "react-redux";
+import store from "./state/store"
 
+import { StatusBar } from "expo-status-bar";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import useCachedResources from "./hooks/useCachedResources";
 import useColorScheme from "./hooks/useColorScheme";
 import Navigation from "./navigation";
@@ -14,10 +18,12 @@ export default function App() {
     return null;
   } else {
     return (
-      <SafeAreaProvider>
+      <Provider store={store}>
+        <ApolloProvider client={client}>
         <Navigation colorScheme={colorScheme} />
         <StatusBar />
-      </SafeAreaProvider>
+        </ApolloProvider>
+      </Provider>
     );
   }
 }
