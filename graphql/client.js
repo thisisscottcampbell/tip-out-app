@@ -2,11 +2,12 @@ import { ApolloClient, HttpLink, InMemoryCache, split } from "@apollo/client";
 import { WebSocketLink } from "apollo-link-ws";
 import { getMainDefinition } from "apollo-utilities";
 
-const server_url = 'localhost:8080/graphql';
+//For running on external device (phone), replace localhost with your IPv4 address. eq. 192.168.1.XXX
+const server_url = "localhost:8080/graphql";
 
 export const client = new ApolloClient({
   uri: `http://${server_url}`,
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
 });
 
 // const httpLink = new HttpLink({
