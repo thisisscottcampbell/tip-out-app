@@ -1,4 +1,7 @@
 import React, {useState, useEffect} from "react";
+import { useQuery } from "@apollo/client"
+import SIGNIN_USER from "../../graphql/mutations/signIn"
+
 import styles from "./styles";
 import { Text, View, TextInput, Button, Alert } from "react-native";
 import { useForm, Controller } from "react-hook-form";
@@ -6,7 +9,7 @@ import { LoginProps } from "../../types";
 import { RootState } from "../../state/store"
 
 import {useSelector, useDispatch} from 'react-redux'
-import {login, setEmail, setPassword} from '../../state/actions/actions'
+import {setEmail, setPassword} from '../../state/actions/actions'
 
 import StyledPrimaryButton from "../../components/PrimaryButton";
 
@@ -17,7 +20,15 @@ export default function LoginScreen({ navigation }: LoginProps) {
     formState: { errors },
   } = useForm();
 
+  
 
+  const onSubmitSignin = (email: string, password: string) => {
+    const { data, error, loading } = useQuery(SIGNIN_USER, {variables: { email: email, password: password },
+    });
+    console.log('data', data)
+  };
+
+  
   const {email, password} = useSelector((state: RootState) => state.loginReducer);//loginData contains .email and .password
   const dispatch = useDispatch();
 
@@ -65,10 +76,13 @@ export default function LoginScreen({ navigation }: LoginProps) {
 
       <StyledPrimaryButton
         text={"Login"}
-        onPress={handleSubmit((data) => {
+        onPress={handleSubmit(onSubmitSignin(email,password))
+          
+          //onSubmitSignin(email, password)
        //graphql query for database
-          navigation.navigate("BottomTab");
-        })}
+          //navigation.navigate("BottomTab");
+        }
+        //)}
       />
     </View>
   );
