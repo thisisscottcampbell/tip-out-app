@@ -1,32 +1,34 @@
-export default employees = [
+const employees = [
   {
     id: 0,
     firstName: "Logan",
     lastName: "Thies",
-    position: "server",
+    position: 0,
   },
   {
     id: 1,
     firstName: "Konrad",
     lastName: "Kopko",
-    position: "bartender",
+    position: 2,
   },
   {
     id: 2,
     firstName: "Cara",
     lastName: "Dibdin",
-    position: "host",
+    position: 1,
   },
   {
     id: 3,
     firstName: "Giovanni",
     lastName: "Lithuma",
-    position: "bartender",
+    position: 2,
   },
   {
     id: 4,
     firstName: "Scott",
     lastName: "Campbell",
-    position: "Busser",
+    position: 3,
   },
 ];
+
+export default employees;
