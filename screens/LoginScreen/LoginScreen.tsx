@@ -1,29 +1,29 @@
 import { Text, View, TextInput, Image } from "react-native";
 
 import React from "react";
-import { useQuery, useLazyQuery } from "@apollo/client"
-import SIGNIN_USER from "../../graphql/mutations/signIn"
+import { useQuery, useLazyQuery } from "@apollo/client";
+import SIGNIN_USER from "../../graphql/mutations/signIn";
 
 import { LoginProps } from "../../types";
 
 import { useForm, Controller } from "react-hook-form";
-import { yupResolver } from '@hookform/resolvers/yup';
+import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import { RootState } from "../../state/store"
-import {useSelector, useDispatch} from 'react-redux'
-import {setEmail, setPassword} from '../../state/actions/actions'
+import { RootState } from "../../state/store";
+import { useSelector, useDispatch } from "react-redux";
+import { setEmail, setPassword } from "../../state/actions/actions";
 
 import styles from "./styles";
 import StyledPrimaryButton from "../../components/PrimaryButton";
 
-const schema = yup.object().shape ({
+const schema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Email is required"),
   password: yup
     .string()
     .min(8, ({ min }) => `Password must be at least ${min} characters`)
-    .required('Password is required'),
-})
+    .required("Password is required"),
+});
 
 export default function LoginScreen({ navigation }: LoginProps) {
   const {
@@ -31,50 +31,54 @@ export default function LoginScreen({ navigation }: LoginProps) {
     handleSubmit,
     formState: { errors },
     reset,
-    watch
+    watch,
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      'email': '',
-      'password': ''
+      email: "",
+      password: "",
     },
-    reValidateMode: "onChange"
+    reValidateMode: "onChange",
   });
 
   // console.log(errors)
   // const nameWatch = watch('password')
   // console.log(nameWatch)
 
-  const {email, password} = useSelector((state: RootState) => state.loginReducer);
+  const { email, password } = useSelector(
+    (state: RootState) => state.loginReducer
+  );
   const dispatch = useDispatch();
 
   // const [getUser, { loading, data, error }] = useLazyQuery(SIGNIN_USER);
-    const { loading, error, data } = useQuery(SIGNIN_USER, {variables: { email,password }});
+  const { loading, error, data } = useQuery(SIGNIN_USER, {
+    variables: { email, password },
+  });
 
-    // console.log('loading', loading)
-    // console.log('error', error)
-    console.log('data', data?.getUser)
-  
+  console.log("loading", loading);
+  console.log("error", error);
+  console.log("data", data?.getUser);
+
   return (
     <View style={styles.container}>
       <Image
         style={styles.image}
-        source={require('../../assets/images/tipout.png')}
+        source={require("../../assets/images/tipout.png")}
       />
       {/* <Text>Please enter your Info</Text> */}
 
       <Controller
         control={control}
-          name="email"
-          render={({ field: { onChange, onBlur, value } }) => (
-            <TextInput
-              style={styles.input}
-              onBlur={onBlur}
-              onChangeText={value => onChange(value)}
-              value={value}
-              placeholder="email"
-              placeholderTextColor="#f0b3ff"
-            />
+        name="email"
+        render={({ field: { onChange, onBlur, value } }) => (
+          <TextInput
+            style={styles.input}
+            onBlur={onBlur}
+            onChangeText={(value) => onChange(value)}
+            value={value}
+            placeholder="email"
+            placeholderTextColor="#f0b3ff"
+          />
         )}
       />
       <Text style={styles.error}>{errors.email?.message}</Text>
@@ -83,14 +87,14 @@ export default function LoginScreen({ navigation }: LoginProps) {
         control={control}
         name="password"
         render={({ field: { onChange, onBlur, value } }) => (
-            <TextInput
-              style={styles.input}
-              onBlur={onBlur}
-              onChangeText={(value) => onChange(value)}
-              value={value}
-              placeholder="password"
-              placeholderTextColor="#f0b3ff"
-            />
+          <TextInput
+            style={styles.input}
+            onBlur={onBlur}
+            onChangeText={(value) => onChange(value)}
+            value={value}
+            placeholder="password"
+            placeholderTextColor="#f0b3ff"
+          />
         )}
       />
       <Text style={styles.error}>{errors.password?.message}</Text>
@@ -99,14 +103,14 @@ export default function LoginScreen({ navigation }: LoginProps) {
       <StyledPrimaryButton
         errors={errors}
         text={"Login"}
-        onPress={handleSubmit(({email,password}) => {
+        onPress={handleSubmit(({ email, password }) => {
           //store data in redux store / call login API
           //then navigate to the next screen
-          dispatch(setEmail(email))
-          dispatch(setPassword(password))
+          dispatch(setEmail(email));
+          dispatch(setPassword(password));
           // getUser({ variables: { email,password }})
-          console.log("SUBMITTED", email,password)
-          reset(); 
+          console.log("SUBMITTED", email, password);
+          reset();
         })}
       />
     </View>
