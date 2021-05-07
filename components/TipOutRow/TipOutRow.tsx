@@ -3,43 +3,28 @@ import styles from "./styles";
 import DropDown from "../DropDown";
 import AddButton from "../AddButton";
 import { View, TextInput, Text } from "react-native";
-import { useForm, Controller } from "react-hook-form";
 
-export default function TipOutRow() {
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+import transactions from "../../Data/Transactions";
+import employees from "../../Data/Employees";
+
+export default function TipOutRow({ slip }: any) {
+  console.log("tansactions --> ", transactions);
+
+  const test = transactions.filter((transaction) => {
+    console.log("slip trans --> ", slip.transaction);
+    console.log("trans.id --> ", transaction.id);
+    return slip.transaction === transaction.id;
+  });
+
+  console.log("test --> ", test);
+  console.log("test.from --> ", test[0].from);
+  console.log("test.to --> ", test[0].to);
 
   return (
-    <View>
-      <Controller
-        control={control}
-        name="tipOutAmount"
-        rules={{ required: true }}
-        render={({ field: { onChange, onBlur, value } }) => {
-          return (
-            <View style={styles.container}>
-              <DropDown />
-              <TextInput
-                style={styles.input}
-                onBlur={onBlur}
-                onChangeText={(value) => onChange(value)}
-                value={value}
-                placeholder="$$$"
-                placeholderTextColor="#f0b3ff"
-                // autoFocus={true}
-                // returnKeyType={"next"}
-                // blurOnSubmit={false}
-                // onSubmitEditing={() => tipsReceivedRef.current.focus()}
-              />
-              <AddButton text={"+"} />
-            </View>
-          );
-        }}
-      />
-      {errors.totalSales && <Text>Total Sales is Required!</Text>}
+    <View style={{ flexDirection: "row" }}>
+      <Text>{`From: ${employees[test[0].from].firstName} |`}</Text>
+      <Text>{`To: ${employees[test[0].to].lastName} |`}</Text>
+      <Text>{`Amount: ${slip.amount}`}</Text>
     </View>
   );
 }
