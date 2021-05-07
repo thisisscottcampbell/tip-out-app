@@ -7,7 +7,7 @@ import employees from "../../Data/Employees";
 export default function DropDown() {
   const [selectedValue, setSelectedValue] = useState(employees[0]);
   return (
-    <View style={styles.container}>
+    <View>
       <Picker
         selectedValue={selectedValue}
         style={styles.dropDown}
