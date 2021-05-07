@@ -1,7 +1,7 @@
-import gql from "graphql-tag";
+import {gql} from "@apollo/client";
 
 export default gql`
-  query($email: String, $password: String) {
+  query GetUser($email: String, $password: String) {
     getUser(email: $email, password: $password) {
       first_name
       last_name
