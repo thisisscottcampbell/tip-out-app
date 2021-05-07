@@ -1,5 +1,8 @@
-import React from "react";
 import { Text, View, TextInput, Image } from "react-native";
+
+import React from "react";
+import { useQuery } from "@apollo/client"
+import SIGNIN_USER from "../../graphql/mutations/signIn"
 
 import { LoginProps } from "../../types";
 
@@ -43,6 +46,16 @@ export default function LoginScreen({ navigation }: LoginProps) {
   // console.log(nameWatch)
 
   // const {email, password} = useSelector((state: RootState) => state.loginReducer);
+  
+
+  const onSubmitSignin = (email: string, password: string) => {
+    const { data, error, loading } = useQuery(SIGNIN_USER, {variables: { email: email, password: password },
+    });
+    console.log('data', data)
+  };
+
+  
+  const {email, password} = useSelector((state: RootState) => state.loginReducer);//loginData contains .email and .password
   const dispatch = useDispatch();
 
   return (

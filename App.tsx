@@ -1,5 +1,6 @@
+import { ApolloProvider } from "@apollo/client"
 import React from "react";
-
+import { client } from "./graphql/client"
 import { Provider } from "react-redux";
 import store from "./state/store"
 
@@ -18,8 +19,10 @@ export default function App() {
   } else {
     return (
       <Provider store={store}>
+        <ApolloProvider client={client}>
         <Navigation colorScheme={colorScheme} />
         <StatusBar />
+        </ApolloProvider>
       </Provider>
     );
   }
