@@ -20,6 +20,16 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     textAlign: "center",
   },
+  text: {
+    backgroundColor: "white",
+    height: 25,
+    borderWidth: 1,
+    fontSize: 15,
+    color: "#b800e6",
+    padding: 5,
+    textAlign: "center",
+    width: 100,
+  },
 });
 
 export default styles;

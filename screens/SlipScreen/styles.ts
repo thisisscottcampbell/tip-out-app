@@ -4,6 +4,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fae6ff",
+    borderColor: "green",
+    borderWidth: 50,
     alignItems: "center",
     justifyContent: "center",
     padding: 20,
