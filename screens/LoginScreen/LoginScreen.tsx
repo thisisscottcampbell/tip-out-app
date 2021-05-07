@@ -1,7 +1,7 @@
 import { Text, View, TextInput, Image } from "react-native";
 
 import React from "react";
-import { useQuery } from "@apollo/client"
+import { useQuery, useLazyQuery } from "@apollo/client"
 import SIGNIN_USER from "../../graphql/mutations/signIn"
 
 import { LoginProps } from "../../types";
@@ -45,19 +45,16 @@ export default function LoginScreen({ navigation }: LoginProps) {
   // const nameWatch = watch('password')
   // console.log(nameWatch)
 
-  // const {email, password} = useSelector((state: RootState) => state.loginReducer);
-  
-
-  const onSubmitSignin = (email: string, password: string) => {
-    const { data, error, loading } = useQuery(SIGNIN_USER, {variables: { email: email, password: password },
-    });
-    console.log('data', data)
-  };
-
-  
-  const {email, password} = useSelector((state: RootState) => state.loginReducer);//loginData contains .email and .password
+  const {email, password} = useSelector((state: RootState) => state.loginReducer);
   const dispatch = useDispatch();
 
+  // const [getUser, { loading, data, error }] = useLazyQuery(SIGNIN_USER);
+    const { loading, error, data } = useQuery(SIGNIN_USER, {variables: { email,password }});
+
+    // console.log('loading', loading)
+    // console.log('error', error)
+    console.log('data', data?.getUser)
+  
   return (
     <View style={styles.container}>
       <Image
@@ -102,14 +99,14 @@ export default function LoginScreen({ navigation }: LoginProps) {
       <StyledPrimaryButton
         errors={errors}
         text={"Login"}
-        onPress={handleSubmit((data) => {
+        onPress={handleSubmit(({email,password}) => {
           //store data in redux store / call login API
           //then navigate to the next screen
-          dispatch(setEmail(data.email))
-          dispatch(setPassword(data.password))
-          console.log("SUBMITTED", data)
-          reset();
-          
+          dispatch(setEmail(email))
+          dispatch(setPassword(password))
+          // getUser({ variables: { email,password }})
+          console.log("SUBMITTED", email,password)
+          reset(); 
         })}
       />
     </View>
