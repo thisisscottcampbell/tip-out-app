@@ -8,8 +8,7 @@ const styles = StyleSheet.create({
     borderColor: "blue",
     alignItems: "center",
     justifyContent: "center",
-    paddingVertical: 20,
-    paddingHorizontal: 120,
+    paddingVertical: 1,
   },
   dropDown: {
     backgroundColor: "white",
