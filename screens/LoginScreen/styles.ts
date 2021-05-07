@@ -12,14 +12,30 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
   },
+  error: {
+    fontSize: 16,
+    color: 'red',
+    marginTop: 16,
+    marginBottom: 16,
+    marginLeft: 36,
+    marginRight: 36
+  },
   input: {
-    margin: 10,
+    // margin: 10,
     width: 230,
     height: 50,
     fontSize: 25,
     color: "#b800e6",
     backgroundColor: "white",
     textAlign: "center",
+  },
+  image: {
+    width: 360,
+    height: 120,
+    marginBottom: 50,
+    borderColor: '#fae6ff',
+    borderWidth: 2,
+    borderRadius: 100,
   },
   link: {
     marginTop: 15,
