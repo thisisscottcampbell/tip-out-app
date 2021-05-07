@@ -35,7 +35,7 @@ export default function LoginScreen({ navigation }: LoginProps) {
       'email': '',
       'password': ''
     },
-    reValidateMode: "onSubmit"
+    reValidateMode: "onChange"
   });
 
   // console.log(errors)
@@ -96,6 +96,7 @@ export default function LoginScreen({ navigation }: LoginProps) {
           dispatch(setPassword(data.password))
           console.log("SUBMITTED", data)
           reset();
+          
         })}
       />
     </View>
