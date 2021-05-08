@@ -2,7 +2,9 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 import loginReducer from "./reducers/loginReducer";
-const rootReducer = combineReducers({ loginReducer });
+import slipReducer from "./reducers/slipReducer";
+
+const rootReducer = combineReducers({ loginReducer, slipReducer });
 
 const store = createStore(rootReducer);
 

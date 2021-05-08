@@ -1,25 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./styles";
 import { View } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import employees from "../../Data/Employees";
 
-export default function DropDown() {
-  const [selectedValue, setSelectedValue] = useState(employees[0]);
+export default function DropDown({value, onChange}) {
   return (
     <View>
       <Picker
-        selectedValue={selectedValue}
+        selectedValue={value}
         style={styles.dropDown}
         itemStyle={styles.text}
-        onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+        onValueChange={(itemValue) => onChange(itemValue)}
       >
         {employees.map((employee) => {
           return (
             <Picker.Item
               key={employee.id}
               label={`${employee.firstName} ${employee.lastName}`}
-              value={`${employee.id}`}
+              value={`${employee.firstName}`}
             />
           );
         })}
@@ -27,27 +26,3 @@ export default function DropDown() {
     </View>
   );
 }
-
-// export default function DropDown() {
-//   const [open, setOpen] = useState(false);
-//   const [value, setValue] = useState(null);
-//   const [items, setItems] = useState([
-//     { label: "Apple", value: "apple" },
-//     { label: "Banana", value: "banana" },
-//   ]);
-
-//   return (
-//     <DropDownPicker
-//       open={open}
-//       value={value}
-//       items={items}
-//       setValue={setValue}
-//       setItems={setItems}
-//       setOpen={setOpen}
-//       style={styles.dropDown}
-//       // containerStyle={styles.container}
-//       dropDownContainerStyle={styles.dropDownContainer}
-//       // dropDownDirection={"BOTTOM"}
-//     />
-//   );
-// }

@@ -10,6 +10,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 20,
   },
+  error: {
+    fontSize: 16,
+    color: 'red',
+    textAlign: "center",
+  },
   input: {
     margin: 10,
     width: 85,

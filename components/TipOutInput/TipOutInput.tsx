@@ -4,60 +4,81 @@ import DropDown from "../DropDown";
 import AddButton from "../AddButton";
 import { View, TextInput, Text } from "react-native";
 import { useForm, Controller } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 import TipOutRowContainer from "../../containers/TipOutRowContainer";
+import { useDispatch } from "react-redux";
+import { addSlip } from '../../state/actions'
+
+const schema = yup.object().shape({
+  amount: yup.number().integer('invalid number'),
+});
 
 export default function TipOutInput() {
   const {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+    reset
+  } = useForm({
+    resolver: yupResolver(schema)
+  });
+
+  const dispatch = useDispatch()
 
   return (
     <View style={{ borderColor: "red", borderWidth: 2 }}>
-      <Controller
-        control={control}
-        name="tipOutAmount"
-        rules={{ required: true }}
-        render={({ field: { onChange, onBlur, value } }) => {
-          return (
-            <View
-              style={{
-                borderColor: "green",
-                borderWidth: 2,
-              }}
-            >
-              <DropDown />
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "center",
-                  borderColor: "blue",
-                  borderWidth: 2,
-                }}
-              >
-                <TextInput
-                  style={styles.input}
-                  onBlur={onBlur}
-                  onChangeText={(value) => onChange(value)}
-                  value={value}
-                  placeholder="$$$"
-                  placeholderTextColor="#f0b3ff"
-                  // autoFocus={true}
-                  // returnKeyType={"next"}
-                  // blurOnSubmit={false}
-                  // onSubmitEditing={() => tipsReceivedRef.current.focus()}
-                />
-                <AddButton style={styles.addButton} text={"+"} />
-              </View>
-            </View>
-          );
+      <View
+        style={{
+          borderColor: "green",
+          borderWidth: 2,
         }}
-      />
-      {errors.totalSales && <Text>Total Sales is Required!</Text>}
+        >
+        <Controller
+          control={control}
+          name="employeeTo"
+          rules={{ required: true }}
+          render={({ field: { value, onChange } }) => {
+            return <DropDown value={value} onChange={onChange}/>
+          }}
+        />
 
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "center",
+            borderColor: "blue",
+            borderWidth: 2,
+          }}
+        >
+
+          <Controller
+            control={control}
+            name="amount"
+            rules={{ required: true }}
+            render={({ field: { onChange, onBlur, value } }) => (  
+             <TextInput
+              style={styles.input}
+              onBlur={onBlur}
+              onChangeText={(value) => onChange(value)}
+              value={value}
+              placeholder="$$$"
+              placeholderTextColor="#f0b3ff"
+            />
+            )}
+            />
+          <AddButton style={styles.addButton} text={"+"} onPress={handleSubmit(({employeeTo, amount}) => {
+
+              dispatch(addSlip({employeeTo, amount}))
+              console.log('Data from tipForm --> ', {employeeTo, amount})
+              reset()
+            })}
+          />
+        </View>
+        {/* <Text style={styles.error}>{errors.amount?.message}</Text> */}
+      </View>
       <TipOutRowContainer />
     </View>
-  );
+  ); 
 }
