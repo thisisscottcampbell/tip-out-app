@@ -12,7 +12,7 @@ import * as yup from "yup";
 
 import { RootState } from "../../state/store";
 import { useSelector, useDispatch } from "react-redux";
-import { setEmail, setPassword } from "../../state/actions/actions";
+import { setEmail, setPassword } from "../../state/actions";
 
 import styles from "./styles";
 import StyledPrimaryButton from "../../components/PrimaryButton";
