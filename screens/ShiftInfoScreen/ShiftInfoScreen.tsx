@@ -4,6 +4,8 @@ import { useForm, Controller } from "react-hook-form";
 import { Text, View, TextInput, Alert } from "react-native";
 import StyledPrimaryButton from "../../components/PrimaryButton";
 import { TipOutProps } from "../../types";
+import { useDispatch } from "react-redux";
+import { setShiftData } from "../../state/actions"
 
 export default function ShiftInfoScreen({ navigation }: TipOutProps) {
   const {
@@ -16,12 +18,16 @@ export default function ShiftInfoScreen({ navigation }: TipOutProps) {
   const foodSalesRef = useRef(null);
   const liquorSalesRef = useRef(null);
 
+  const dispatch = useDispatch()
+
   return (
     <View style={styles.container}>
       <Text>Shift Info</Text>
       {/* Total Sales */}
       <Controller
         control={control}
+        name="totalSales"
+        rules={{ required: true }}
         render={({ field: { onChange, onBlur, value } }) => {
           return (
             <TextInput
@@ -38,14 +44,14 @@ export default function ShiftInfoScreen({ navigation }: TipOutProps) {
             />
           );
         }}
-        name="totalSales"
-        rules={{ required: true }}
       />
       {errors.totalSales && <Text>Total Sales is Required!</Text>}
 
       {/* Tips */}
       <Controller
         control={control}
+        name="tipsReceived"
+        rules={{ required: true }}
         render={({ field: { onChange, onBlur, value } }) => {
           return (
             <TextInput
@@ -62,14 +68,14 @@ export default function ShiftInfoScreen({ navigation }: TipOutProps) {
             />
           );
         }}
-        name="tipsReceived"
-        rules={{ required: true }}
       />
       {errors.tipsReceived && <Text>Tips Received is Required!</Text>}
 
       {/* Food */}
       <Controller
         control={control}
+        name="foodSales"
+        rules={{ required: true }}
         render={({ field: { onChange, onBlur, value } }) => {
           return (
             <TextInput
@@ -86,14 +92,14 @@ export default function ShiftInfoScreen({ navigation }: TipOutProps) {
             />
           );
         }}
-        name="foodSales"
-        rules={{ required: true }}
       />
       {errors.foodSales && <Text>Food Sales are Required!</Text>}
 
       {/* Liquor */}
       <Controller
         control={control}
+        name="liquorSales"
+        rules={{ required: true }}
         render={({ field: { onChange, onBlur, value } }) => {
           return (
             <TextInput
@@ -107,8 +113,6 @@ export default function ShiftInfoScreen({ navigation }: TipOutProps) {
             />
           );
         }}
-        name="liquorSales"
-        rules={{ required: true }}
       />
       {errors.liquorSales && <Text>Liquor Sales are Required!</Text>}
 
@@ -117,6 +121,7 @@ export default function ShiftInfoScreen({ navigation }: TipOutProps) {
         onPress={handleSubmit((data) => {
           console.log(data); //send data to state manager
           // Alert.alert("Data Submitted", `${JSON.stringify(data)}`)
+          dispatch(setShiftData(data))
           navigation.navigate("SlipScreen");
         })}
       />
