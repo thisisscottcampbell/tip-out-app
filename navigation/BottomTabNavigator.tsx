@@ -5,7 +5,6 @@
 
 import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createStackNavigator } from "@react-navigation/stack";
 import * as React from "react";
 
 import Colors from "../constants/Colors";
@@ -13,7 +12,13 @@ import useColorScheme from "../hooks/useColorScheme";
 
 import { BottomTabParamList } from "../types";
 
-import { HomeNavigator } from "./HomeNavigator";
+import {
+  HistoryNavigator,
+  HomeNavigator,
+  AccountNavigator,
+  TBDNavigator,
+  TipOutNavigator,
+} from "./BottomTabNavigators";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -28,6 +33,42 @@ export default function BottomTabNavigator() {
       <BottomTab.Screen
         name="Home"
         component={HomeNavigator}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="ios-code" color={color} />
+          ),
+        }}
+      />
+      <BottomTab.Screen
+        name="TBD"
+        component={TBDNavigator}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="ios-code" color={color} />
+          ),
+        }}
+      />
+      <BottomTab.Screen
+        name="TipOut"
+        component={TipOutNavigator}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="ios-code" color={color} />
+          ),
+        }}
+      />
+      <BottomTab.Screen
+        name="History"
+        component={HistoryNavigator}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="ios-code" color={color} />
+          ),
+        }}
+      />
+      <BottomTab.Screen
+        name="Account"
+        component={AccountNavigator}
         options={{
           tabBarIcon: ({ color }) => (
             <TabBarIcon name="ios-code" color={color} />
